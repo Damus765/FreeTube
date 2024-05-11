@@ -7,6 +7,11 @@ export default defineComponent({
   components: {
     'ft-prompt': FtPrompt
   },
+  inject: {
+    handleSpaceKeyOnKeyboardFocusOnly: {
+      default: false
+    }
+  },
   props: {
     title: {
       type: String,
@@ -108,6 +113,12 @@ export default defineComponent({
         }
       } else {
         this.$emit('click')
+      }
+    },
+
+    filterKeyboardEvent: function (event, callback) {
+      if (!this.handleSpaceKeyOnKeyboardFocusOnly || event.currentTarget.hasAttribute('keyboard-focus')) {
+        callback(event)
       }
     },
 

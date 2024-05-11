@@ -19,6 +19,11 @@ export default defineComponent({
     'ft-card': FtCard,
     'ft-list-video-numbered': FtListVideoNumbered
   },
+  inject: {
+    handleSpaceKeyOnKeyboardFocusOnly: {
+      default: false
+    }
+  },
   props: {
     playlistId: {
       type: String,
@@ -539,6 +544,12 @@ export default defineComponent({
       if (container != null && currentVideoItem != null) {
         // Watch view can be ready sooner than this component
         container.scrollTop = currentVideoItem.$el.offsetTop - container.offsetTop
+      }
+    },
+
+    filterKeyboardEvent: function (event, callback) {
+      if (!this.handleSpaceKeyOnKeyboardFocusOnly || event.currentTarget.hasAttribute('keyboard-focus')) {
+        callback(event)
       }
     },
 

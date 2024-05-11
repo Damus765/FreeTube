@@ -21,7 +21,7 @@
       @click="handleIconClick"
       @mousedown="handleIconMouseDown"
       @keydown.enter.prevent="handleIconClick"
-      @keydown.space.prevent="handleIconClick"
+      @keydown.space.prevent="filterKeyboardEvent($event, handleIconClick)"
     />
     <template
       v-if="dropdownShown"

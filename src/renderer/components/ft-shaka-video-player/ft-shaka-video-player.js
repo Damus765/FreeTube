@@ -1966,6 +1966,13 @@ export default defineComponent({
       switch (event.key) {
         case ' ':
         case 'Spacebar': // older browsers might return spacebar instead of a space character
+          // Don't toggle play/pause if the target element received focus from a keyboard
+          if (!event.target.hasAttribute('keyboard-focus')) {
+            // Toggle Play/Pause
+            event.preventDefault()
+            video_.paused ? video_.play() : video_.pause()
+          }
+          break
         case 'K':
         case 'k':
           // Toggle Play/Pause

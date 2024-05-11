@@ -59,7 +59,7 @@
           :aria-pressed="loopEnabled"
           @click="toggleLoop"
           @keydown.enter.prevent="toggleLoop"
-          @keydown.space.prevent="toggleLoop"
+          @keydown.space.prevent="filterKeyboardEvent($event, toggleLoop)"
         />
         <font-awesome-icon
           class="playlistIcon"
@@ -71,7 +71,7 @@
           :aria-pressed="shuffleEnabled"
           @click="toggleShuffle"
           @keydown.enter.prevent="toggleShuffle"
-          @keydown.space.prevent="toggleShuffle"
+          @keydown.space.prevent="filterKeyboardEvent($event, toggleShuffle)"
         />
         <font-awesome-icon
           class="playlistIcon"
@@ -83,7 +83,7 @@
           :aria-pressed="reversePlaylist"
           @click="toggleReversePlaylist"
           @keydown.enter.prevent="toggleReversePlaylist"
-          @keydown.space.prevent="toggleReversePlaylist"
+          @keydown.space.prevent="filterKeyboardEvent($event, toggleReversePlaylist)"
         />
         <font-awesome-icon
           class="playlistIcon"
@@ -93,7 +93,7 @@
           tabindex="0"
           @click="playPreviousVideo"
           @keydown.enter.prevent="playPreviousVideo"
-          @keydown.space.prevent="playPreviousVideo"
+          @keydown.space.prevent="filterKeyboardEvent($event, playPreviousVideo)"
         />
         <font-awesome-icon
           class="playlistIcon"
@@ -103,7 +103,7 @@
           tabindex="0"
           @click="playNextVideo"
           @keydown.enter.prevent="playNextVideo"
-          @keydown.space.prevent="playNextVideo"
+          @keydown.space.prevent="filterKeyboardEvent($event, playNextVideo)"
         />
         <font-awesome-icon
           class="playlistIcon"
@@ -115,7 +115,7 @@
           :aria-pressed="pauseOnCurrentVideo"
           @click="togglePauseOnCurrentVideo"
           @keydown.enter.prevent="togglePauseOnCurrentVideo"
-          @keydown.space.prevent="togglePauseOnCurrentVideo"
+          @keydown.space.prevent="filterKeyboardEvent($event, togglePauseOnCurrentVideo)"
         />
       </p>
       <div

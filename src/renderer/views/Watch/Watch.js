@@ -11,6 +11,7 @@ import WatchVideoLiveChat from '../../components/watch-video-live-chat/watch-vid
 import WatchVideoPlaylist from '../../components/watch-video-playlist/watch-video-playlist.vue'
 import WatchVideoRecommendations from '../../components/WatchVideoRecommendations/WatchVideoRecommendations.vue'
 import FtAgeRestricted from '../../components/ft-age-restricted/ft-age-restricted.vue'
+import useKeyboardFocus from '../../composables/keyboard-focus'
 import packageDetails from '../../../../package.json'
 import {
   buildVTTFileLocally,
@@ -53,6 +54,9 @@ export default defineComponent({
     'watch-video-recommendations': WatchVideoRecommendations,
     'ft-age-restricted': FtAgeRestricted
   },
+  provide: {
+    handleSpaceKeyOnKeyboardFocusOnly: true
+  },
   beforeRouteLeave: async function (to, from, next) {
     this.handleRouteChange()
     window.removeEventListener('beforeunload', this.handleWatchProgress)
@@ -62,6 +66,9 @@ export default defineComponent({
     }
 
     next()
+  },
+  setup: function () {
+    useKeyboardFocus()
   },
   data: function () {
     return {
