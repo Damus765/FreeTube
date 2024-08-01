@@ -234,6 +234,10 @@ export default defineComponent({
 
       return this.$store.getters.getPlaylist(this.playlistId)
     },
+    isAudioOnlyChannel: function() {
+      if (this.channelId === '') { return false }
+      return JSON.parse(this.$store.getters.getAudioOnlyChannels).some(ch => ch.name === this.channelId)
+    }
   },
   watch: {
     $route() {
@@ -356,6 +360,10 @@ export default defineComponent({
           channelName: this.channelName,
           channelId: this.channelId
         })
+
+        if (this.isAudioOnlyChannel) {
+          this.activeFormat = 'audio'
+        }
 
         // `result.page[0].microformat.publish_date` example value: `2023-08-12T08:59:59-07:00`
         this.videoPublished = new Date(result.page[0].microformat.publish_date).getTime()
@@ -726,6 +734,10 @@ export default defineComponent({
             channelName: result.author,
             channelId: result.authorId
           })
+
+          if (this.isAudioOnlyChannel) {
+            this.activeFormat = 'audio'
+          }
 
           this.videoPublished = result.published * 1000
           this.videoDescriptionHtml = result.descriptionHtml

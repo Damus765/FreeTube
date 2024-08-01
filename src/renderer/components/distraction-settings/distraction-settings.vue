@@ -248,6 +248,22 @@
     </ft-flex-box>
     <ft-flex-box>
       <ft-input-tags
+        :label="$t('Settings.Distraction Free Settings.Audio Only Channels')"
+        :tag-name-placeholder="$t('Settings.Distraction Free Settings.Audio Only Channels Placeholder')"
+        :show-action-button="true"
+        :tag-list="audioOnlyChannels"
+        :tooltip="$t('Tooltips.Distraction Free Settings.Audio Only Channels')"
+        :validate-tag-name="validateChannelId"
+        :find-tag-info="findChannelTagInfo"
+        :are-channel-tags="true"
+        @invalid-name="handleInvalidChannel"
+        @error-find-tag-info="handleChannelAPIError"
+        @change="handleAudioOnlyChannel"
+        @already-exists="handleChannelsExists"
+      />
+    </ft-flex-box>
+    <ft-flex-box>
+      <ft-input-tags
         :label="$t('Settings.Distraction Free Settings.Hide Videos and Playlists Containing Text')"
         :tag-name-placeholder="$t('Settings.Distraction Free Settings.Hide Videos and Playlists Containing Text Placeholder')"
         :show-action-button="true"

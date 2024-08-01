@@ -120,6 +120,9 @@ export default defineComponent({
         return ch
       })
     },
+    audioOnlyChannels: function () {
+      return JSON.parse(this.$store.getters.getAudioOnlyChannels)
+    },
     forbiddenTitles: function() {
       return JSON.parse(this.$store.getters.getForbiddenTitles)
     },
@@ -150,6 +153,9 @@ export default defineComponent({
     },
     handleChannelsHidden: function (value) {
       this.updateChannelsHidden(JSON.stringify(value))
+    },
+    handleAudioOnlyChannel: function (value) {
+      this.updateAudioOnlyChannels(JSON.stringify(value))
     },
     handleForbiddenTitles: function (value) {
       this.updateForbiddenTitles(JSON.stringify(value))
@@ -212,6 +218,7 @@ export default defineComponent({
       'updateHideSharingActions',
       'updateHideChapters',
       'updateChannelsHidden',
+      'updateAudioOnlyChannels',
       'updateForbiddenTitles',
       'updateShowDistractionFreeTitles',
       'updateHideFeaturedChannels',
