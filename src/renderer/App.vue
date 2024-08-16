@@ -69,6 +69,7 @@
       :inert="isPromptOpen"
     />
     <ft-flex-box
+      id="main"
       class="flexBox routerView"
       role="main"
       :inert="isPromptOpen"

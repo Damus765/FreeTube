@@ -71,6 +71,12 @@
           class="logoText"
         />
       </div>
+      <a
+        class="skipLink"
+        href="#main"
+      >
+        {{ $t('Skip to main content') }}
+      </a>
     </div>
     <div class="middle">
       <div

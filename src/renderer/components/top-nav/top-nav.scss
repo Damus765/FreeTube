@@ -186,6 +186,21 @@
       }
     }
   }
+
+  .skipLink {
+    color: var(--primary-text-color);
+    text-wrap: nowrap;
+    text-decoration: none;
+    position: absolute;
+    inset-block-start: -1000px;
+    line-height: 40px;
+    padding-inline: 10px;
+
+    &:focus-within {
+      background-color: var(--side-nav-hover-color);
+      position: static;
+    }
+  }
 }
 
 .middle {
