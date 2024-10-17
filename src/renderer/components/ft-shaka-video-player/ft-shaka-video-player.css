@@ -42,6 +42,19 @@
   /* Place the seek bar above the controls (the default is below) */
   display: flex;
   flex-direction: column-reverse;
+
+  /* Set smaller controls padding */
+  padding: 0 0 4px;
+  width: 100%;
+}
+
+:deep(.shaka-range-container) {
+  border-radius: 0;
+  margin: 4px 0;
+}
+
+:deep(.shaka-scrim-container) {
+  background: linear-gradient(to top, #000 0, transparent 50px);
 }
 
 /*
